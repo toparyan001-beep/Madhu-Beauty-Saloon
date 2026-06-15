@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Madhu Beauty Salon | Gurugram</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body { font-family: system-ui, sans-serif; }
         .hero-bg {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/Screenshot 2026-06-15 130055.png');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Screenshot 2026-06-15 130055.png');
             background-size: cover;
             background-position: center;
         }
@@ -16,30 +17,30 @@
 </head>
 <body class="bg-[#fdf4f0]">
 
-    <h1 class="text-4xl text-center py-10 text-rose-600">Madhu Beauty Salon</h1>
+<h1 class="text-5xl font-bold text-center py-10 text-rose-600">Madhu Beauty Salon</h1>
 
-    <!-- Gallery -->
-    <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-8">Our Salon Gallery</h2>
-        <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
-    </div>
+<div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-10">Our Salon Gallery</h2>
+    <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 gap-6"></div>
+</div>
 
-    <script>
-        const images = [
-            "Screenshot 2026-06-15 130014.png",
-            "Screenshot 2026-06-15 130036.png",
-            "Screenshot 2026-06-15 130055.png",
-            "Screenshot 2026-06-15 130108.png",
-            "Screenshot 2026-06-15 130116.png",
-            "Screenshot 2026-06-15 130126.png",
-            "Screenshot 2026-06-15 130140.png"
-        ];
+<script>
+    const images = [
+        "Screenshot 2026-06-15 130014.png",
+        "Screenshot 2026-06-15 130036.png",
+        "Screenshot 2026-06-15 130055.png",
+        "Screenshot 2026-06-15 130108.png",
+        "Screenshot 2026-06-15 130116.png",
+        "Screenshot 2026-06-15 130126.png",
+        "Screenshot 2026-06-15 130140.png"
+    ];
 
-        let html = '';
-        images.forEach(img => {
-            html += `<img src="images/${img}" class="w-full rounded-xl shadow">`;
-        });
-        document.getElementById('gallery').innerHTML = html;
-    </script>
+    let html = '';
+    images.forEach(img => {
+        html += `<img src="${img}" class="w-full rounded-2xl shadow-lg">`;
+    });
+    document.getElementById('gallery').innerHTML = html;
+</script>
+
 </body>
 </html>
