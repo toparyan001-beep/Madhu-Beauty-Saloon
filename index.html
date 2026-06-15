@@ -15,12 +15,14 @@
             background-size: cover;
             background-position: center;
         }
+        .gallery-img { transition: 0.4s; }
+        .gallery-img:hover { transform: scale(1.05); }
     </style>
 </head>
 <body class="bg-[#fdf4f0] text-gray-800">
 
     <!-- Navbar -->
-    <nav class="bg-white shadow sticky top-0 z-50">
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <span class="text-4xl">🌸</span>
@@ -40,33 +42,33 @@
     </section>
 
     <!-- Gallery -->
-    <section id="gallery" class="py-20">
+    <section id="gallery" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="heading text-5xl font-bold text-center mb-12 text-rose-700">Our Salon</h2>
+            <h2 class="heading text-5xl font-bold text-center mb-12 text-rose-700">Our Salon Gallery</h2>
             <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-6"></div>
         </div>
     </section>
 
     <!-- Booking Form -->
-    <div id="bookingModal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center">
-        <div class="bg-white rounded-3xl p-8 max-w-md w-full mx-4">
-            <h2 class="text-3xl font-bold text-center mb-6">Book Appointment</h2>
+    <div id="bookingModal" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full">
+            <h2 class="text-3xl font-bold text-center mb-6 text-rose-700">Book Appointment</h2>
             <form onsubmit="submitForm(event)" class="space-y-5">
                 <input type="text" id="name" placeholder="Full Name *" required class="w-full p-4 border rounded-2xl">
-                <input type="tel" id="phone" placeholder="Phone *" required class="w-full p-4 border rounded-2xl">
-                <input type="email" id="email" placeholder="Email" class="w-full p-4 border rounded-2xl">
+                <input type="tel" id="phone" placeholder="Phone Number *" required class="w-full p-4 border rounded-2xl">
+                <input type="email" id="email" placeholder="Email Address" class="w-full p-4 border rounded-2xl">
                 <select id="service" class="w-full p-4 border rounded-2xl"></select>
-                <button type="submit" class="w-full bg-rose-600 text-white py-5 rounded-3xl font-semibold">Submit</button>
+                <button type="submit" class="w-full bg-rose-600 text-white py-5 rounded-3xl font-semibold">Submit Request</button>
             </form>
-            <button onclick="hideModal()" class="mt-4 text-gray-500">Close</button>
+            <button onclick="hideModal()" class="mt-4 text-gray-500 w-full">Close</button>
         </div>
     </div>
 
     <script>
-        const services = ["Bridal Makeup","Party Makeup","Hair Spa","Facial","Mehendi","Nail Art"];
+        const services = ["Bridal Makeup", "Party Makeup", "Hair Spa", "Facial", "Mehendi", "Nail Art"];
 
         function loadGallery() {
-            const imgs = [
+            const imageNames = [
                 "Screenshot 2026-06-15 130014.png",
                 "Screenshot 2026-06-15 130036.png",
                 "Screenshot 2026-06-15 130055.png",
@@ -75,29 +77,36 @@
                 "Screenshot 2026-06-15 130126.png",
                 "Screenshot 2026-06-15 130140.png"
             ];
-            let html = "";
-            imgs.forEach(img => {
-                html += `<div class="rounded-3xl overflow-hidden shadow-lg"><img src="images/${img}" class="w-full h-64 object-cover"></div>`;
+
+            let html = '';
+            imageNames.forEach(img => {
+                html += `
+                    <div class="overflow-hidden rounded-3xl shadow-lg">
+                        <img src="images/${img}" class="gallery-img w-full h-64 object-cover" alt="Salon Photo">
+                    </div>`;
             });
-            document.getElementById("gallery-grid").innerHTML = html;
+            document.getElementById('gallery-grid').innerHTML = html;
         }
 
         function showBookingForm() {
-            document.getElementById("bookingModal").classList.remove("hidden");
-            const sel = document.getElementById("service");
-            sel.innerHTML = '<option value="">Select Service</option>' + services.map(s => `<option>${s}</option>`).join('');
+            document.getElementById('bookingModal').classList.remove('hidden');
+            const select = document.getElementById('service');
+            select.innerHTML = '<option value="">Select Service</option>' + 
+                services.map(s => `<option>${s}</option>`).join('');
         }
 
         function hideModal() {
-            document.getElementById("bookingModal").classList.add("hidden");
+            document.getElementById('bookingModal').classList.add('hidden');
         }
 
         function submitForm(e) {
             e.preventDefault();
-            alert("✅ Booking Request Received!\nWe will call you soon.");
+            alert("✅ Thank you! Your appointment request has been received.\nWe will contact you soon.");
             hideModal();
+            e.target.reset();
         }
 
+        // Load gallery when page loads
         window.onload = loadGallery;
     </script>
 </body>
